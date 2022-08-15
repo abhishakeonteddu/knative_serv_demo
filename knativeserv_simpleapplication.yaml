@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hellosvc
+  namespace: knative-demo
+spec:
+  template:
+    metadata:
+      name: hellosvc-main-bc92df0-rev1
+    spec:
+      containers:
+        - image: 443247825008.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd:main-bc92df0
+          ports:
+            - containerPort: 80
