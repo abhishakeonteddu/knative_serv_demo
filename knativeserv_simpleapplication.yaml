@@ -6,9 +6,6 @@ metadata:
   labels: 
     app: hellosvc 
 spec:
-  selector:
-    matchLabels:
-      app: hellosvc
   template :
     metadata:
       name: hellosvc-main-839572c-rev8
