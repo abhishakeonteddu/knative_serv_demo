@@ -1,24 +1,15 @@
-apiVersion: serving.knative.dev/v1
+apiVersion: serving.knative.dev/v1alpha1 # Current version of Knative
 kind: Service
 metadata:
-  name: hellosvc
-  namespace: knative-demo
-  labels: 
-    app: hellosvc 
+  name: helloworld-go # The name of the app
+  namespace: knative-demo # The namespace the app will use
 spec:
-  template :
-    metadata:
-      name: hellosvc-main-839572c-rev8
-    spec: 
-      containers:
-        - image: 443247825008.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd:main-839572
-          ports:
-            - containerPort: 80
-            
-  traffic:
-  - tag: current
-    revisionName: hellosvc-main-bc92df0-rev2
-    percent: 100
-  - tag: latest
-    latestRevision: true
-    percent: 0
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: gcr.io/knative-samples/helloworld-go # The URL to the image of the app
+            env:
+            - name: TARGET # The environment variable printed out by the sample app
+              value: "Go Sample v1"
