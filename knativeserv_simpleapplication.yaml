@@ -4,14 +4,15 @@ metadata:
   name: hellosvc
   namespace: knative-demo
   labels: 
-     app: hellosvc 
+    app: hellosvc 
 spec:
-  template:
+  template :
     metadata:
       name: hellosvc-main-839572c-rev8
-    spec:
+    spec: 
       selector:
-         app: hellosvc
+        matchLabels:
+          app: hellosvc
       containers:
         - image: 443247825008.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd:main-839572
           ports:
