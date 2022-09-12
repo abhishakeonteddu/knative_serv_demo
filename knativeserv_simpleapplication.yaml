@@ -16,3 +16,11 @@ spec:
         - image: 443247825008.dkr.ecr.us-east-1.amazonaws.com/gitops-argocd:main-839572
           ports:
             - containerPort: 80
+            
+  traffic:
+  - tag: current
+    revisionName: hellosvc-main-bc92df0-rev2
+    percent: 100
+  - tag: latest
+    latestRevision: true
+    percent: 0
