@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: hellosvc
   namespace: knative-demo
-  lables: 
+  labels: 
      app: hellosvc 
 spec:
   template:
